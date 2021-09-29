@@ -1,4 +1,8 @@
 # assignment2
 SIT223 - Assignment 2
 
-To run the backend, have nodejs installed in your computer and npm install express in the project directory. In a terminal (in the school_project directory), run "node index.js". Then in a web browser, go to http://localhost:3000/student or http://localhost:3000/teacher or http://localhost:3000/homepage. Any other /---- will give a page not found text. 
+Step 1: Install nodejs, express.
+Step 2: In web directory, run "npm start" to run the web server
+Step 3: In api directory, run "npm start" to run the api server
+
+Use localhost:3000 to access the webapp.
