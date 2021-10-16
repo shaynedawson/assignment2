@@ -15,12 +15,20 @@ app.get('/', function (req, res) {
     res.sendFile(`${base}/register.html`);
    });
 
+   app.get('/login', function (req, res) {
+    res.sendFile(`${base}/login.html`);
+   });
+
 app.get('/homepage', function (req, res) {
     res.sendFile(`${base}/homepage.html`);
    });
 
 app.get('/error', function (req, res) {
     res.sendFile(`${base}/error.html`);
+   });
+
+   app.get('/submit', function (req, res) {
+    res.sendFile(`${base}/submission.html`);
    });
 
 app.get('*', function (req, res) {

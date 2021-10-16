@@ -48,7 +48,7 @@ app.get('/api/students', (req, res) => {
 // });
 
 app.post('/api/registration', (req, res) => { 
-    const { fname, lname, c_name, tutor } = req.body; 
+    const { fname, password, c_name, tutor } = req.body; 
     Student.findOne({
         fname : fname
             }, (err, found) => {
@@ -62,7 +62,7 @@ app.post('/api/registration', (req, res) => {
                 else {
                     const newStudent = new Student({
                         fname,
-                        lname,
+                        password,
                         c_name,
                         tutor
                     });
@@ -73,6 +73,33 @@ app.post('/api/registration', (req, res) => {
                                 success: true,
                                 message: 'Created new student'
                             });
+                    });
+                }
+        
+    }); 
+    
+});
+
+app.post('/api/authenticate', (req, res) => { 
+    const { user, password } = req.body; 
+    Student.findOne({
+        fname : user
+            }, (err, found) => {
+                if (err) {
+                    return res.send(err);
+                }
+                else if (!found) {
+                    return res.send('No user found');
+                }
+                else if (found.password != password) {
+                    
+                    return res.send('Incorrect password');
+                }
+                else {
+                    return res.json({
+                        success: true,
+                        message: 'Authenticated successfully', 
+                        isAdmin: found.isAdmin
                     });
                 }
         
